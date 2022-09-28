@@ -27,9 +27,31 @@ class Solution {
     }
 }
 //This is a recursive approach and it is basically called as the reverse post order traversal.
-it is an recursive pproach annd the time complexity is O(N).
+it is a recursive approach annd the time complexity is O(N) and the space complexitry is O(N).
 
 The  second method is iterative method
 
+class Solution {
+    public void flatten(TreeNode root) {
+        if(root == null)
+            return;
+        Stack<TreeNode> st = new Stack<>();
+        st.push(root);
+        while(!st.empty()){
+            TreeNode curr = st.peek();
+            st.pop();
+            if(curr.right != null)
+                st.push(curr.right);
+            if(curr.left != null)
+                st.push(curr.left);
+            if(!st.empty())
+                curr.right = st.peek();
+            curr.left = null;    
+        }
+        
+    }
+}
+
+The time complexity IS O(N) and space complexity is O(N)
 
 
