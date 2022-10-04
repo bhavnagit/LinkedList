@@ -1,0 +1,33 @@
+
+class Solution
+{
+    static int countNodes(Node n)
+    {
+        int res = 1;
+        Node temp = n;
+        while (temp.next != n) {
+            res++;
+            temp = temp.next;
+        }
+        return res;
+    }
+    static int countNodesinLoop(Node head)
+    {
+        
+        Node slow = head, fast = head;
+ 
+        while (slow != null && fast != null
+               && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+ 
+            if (slow == fast)
+                return countNodes(slow);
+        }
+ 
+        return 0;
+    }
+}
+
+Time complexity: O(N), Only one traversal of the linked list is needed.
+Auxiliary Space: O(1), As no extra space is required.
