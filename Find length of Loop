@@ -1,4 +1,7 @@
 
+Find the loop using Floyad cycle and when it find , try to create other function in which keep the track of nodes presnt in
+that loop and then count the number of nodes present in a list.
+
 class Solution
 {
     static int countNodes(Node n)
