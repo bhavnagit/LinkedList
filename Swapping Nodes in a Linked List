@@ -32,3 +32,66 @@ class Solution {
 }
 
 The Time Complexity is O(N) and Space Complexity is O(1).
+
+
+
+There is variety that we to only change the link pointing to the kth node from start and the kth node from end . Swap the node through links.
+
+
+ 
+
+/* Linked List Node class
+   class Node  {
+     int data;
+     Node next;
+     Node(int data)
+     {
+         this.data = data;
+         next = null;
+     }
+  }
+*/
+class GFG
+{
+    //Function to swap Kth node from beginning and end in a linked list.
+    Node swapkthnode(Node head, int num, int K)
+    {
+        // your code here
+        if(head == null){
+            return head;
+        }
+        if(K > num){
+            return head;
+        }
+        Node x = head;
+        Node prevx = null;
+        Node y = head;
+        Node prevy = null;
+        for(int i =1; i<K ; i++){
+            prevx = x;
+            x = x.next;
+        }
+        for(int i =1; i<num-K+1 ; i++){
+            prevy = y;
+            y = y.next;
+        }
+        if(prevx != null){
+            prevx.next = y;
+        }
+        if(prevy != null){
+            prevy.next = x;
+        }
+        Node temp = x.next;
+        x.next = y.next;
+        y.next = temp;
+        if(K == 1){
+            head = y;
+        }
+        if(K == num){
+            head = x;
+        }
+        return head;
+    }
+}
+Time Complexity - O(N)
+Space Complexity - O(1)
