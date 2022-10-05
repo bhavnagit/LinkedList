@@ -1,0 +1,24 @@
+
+class Solution {
+
+    public static int countPairs(LinkedList<Integer> head1, LinkedList<Integer> head2,
+                          int x) {
+     int count=0;
+    HashSet<Integer>set=new HashSet<>();
+    for(int i=0;i<head1.size();i++){
+        set.add(head1.get(i));
+        
+    }
+    
+     for(int i=0;i<head2.size();i++){
+        int diff=x-head2.get(i);
+        if(set.contains(diff)){
+            count++;
+            set.remove(diff);
+        }
+        
+    }           
+    return count;            
+    }
+Time Complexity - O(N)
+Space Complexity - o(!)
