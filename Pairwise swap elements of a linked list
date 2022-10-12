@@ -1,0 +1,54 @@
+class Solution {
+    public ListNode swapPairs(ListNode head) {
+        if(head == null || head.next == null)
+            return head;
+        ListNode node = head;
+        while(node!=null && node.next!=null)
+        {
+            int val = node.val;
+            node.val = node.next.val;
+            node.next.val = val;
+            node=node.next.next;
+        }
+        return head;
+    }
+}
+
+In this method we has changed the value of the nodes in the linked list. Like we take a integer value and temporary store the value in it and then simply swap the value
+to get the desired output.
+Time complexity - O(N)
+Space Complexity - o(1).
+
+
+class Solution {
+    public ListNode swapPairs(ListNode head) {
+       if (head == null || head.next == null) {
+            return head;
+        }
+ 
+        ListNode curr = head, prev = null;
+        while (curr != null && curr.next != null)
+        {
+            ListNode temp = curr.next;
+            curr.next = temp.next;
+            temp.next = curr;
+ 
+            if (prev == null) {
+                head = temp;
+            }
+            else {
+                prev.next = temp;
+            }
+ 
+            prev = curr;
+            curr = curr.next;
+        }
+ 
+        return head;
+    }
+}
+
+In this method we simply break the links and in this we are not changing the value of the nodes , we are changing the links so that we can get the desired output.
+
+Time complexity - O(N)
+Space Complexity - o(1).
