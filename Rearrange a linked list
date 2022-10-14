@@ -1,0 +1,36 @@
+class Solution
+{
+
+   // Should rearrange given linked list such that all even
+   // positioned Nodes are before odd positioned.
+   // Returns nothing
+    void rearrangeEvenOdd(Node head)
+    {
+          //  The task is to complete this method
+        if(head == null){
+            return;
+        }
+        Node onode = head;
+        Node enode = head.next;
+        Node temp = enode;
+        
+        while(true){
+            if(enode==null || enode.next==null){
+                 onode.next = temp;
+               //  enode.next = null;
+                 return ;
+            }
+            
+            // first step.
+            onode.next = enode.next;
+            onode = onode.next;
+            
+           // second step
+            enode.next = onode.next;
+            enode = enode.next;
+        }
+       
+     }
+}
+Time Complexity - O(N)
+Space Complexity - O(1).
