@@ -1,0 +1,75 @@
+
+In this question , linkedlist are given but they are stored in reverse order  
+class Solution {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+      ListNode dummy = new ListNode(0);
+        ListNode temp = dummy;
+        int carry =0;
+        while(l1!= null || l2!= null || carry == 1){
+            int sum =0;
+            if(l1!= null){
+                sum += l1.val;
+                l1 = l1.next;
+            }
+            if(l2 != null){
+                sum += l2.val;
+                l2 = l2.next;
+            }
+            sum += carry;
+            carry = sum/10;
+            ListNode node = new ListNode(sum % 10);
+            temp.next = node;
+            temp = temp.next;
+            
+            
+        }
+        return dummy.next;
+    }  
+}
+
+In this question linkedlist are not stored in reverse order so we have to first reverse the linked list and then add it and also reverse the answer while returning it.
+class Solution{
+    //Function to add two numbers represented by linked list.
+    static Node addTwoLists(Node first, Node second){
+        Node l1 = reverseList(first);
+         Node l2 = reverseList(second);
+        Node dummy = new Node(0);
+        Node temp = dummy;
+        int carry =0;
+        while(l1!= null || l2!= null || carry == 1){
+            int sum =0;
+            if(l1!= null){
+                sum += l1.data;
+                l1 = l1.next;
+            }
+            if(l2 != null){
+                sum += l2.data;
+                l2 = l2.next;
+            }
+            sum += carry;
+            carry = sum/10;
+            Node node = new Node(sum % 10);
+            temp.next = node;
+            temp = temp.next;
+            
+            
+        }
+        Node result = reverseList(dummy.next);
+        return result;
+    }
+    public static Node reverseList(Node head) {
+        Node curr=head,prev=null;
+        while(curr!=null){
+            Node temp=curr.next;
+            curr.next=prev;
+            prev=curr;
+            curr=temp;
+        }
+        return prev;
+    }
+}
+
+
+Time Complexity: O(max(m,n)). Assume that m and n represent the length of l1 and l2 respectively, the algorithm above iterates at most max(m,n) times.
+
+Space Complexity: O(max(m,n)). The length of the new list is at most max(m,n)+1.
